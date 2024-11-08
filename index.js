@@ -1,3 +1,96 @@
+const toggleButton = document.getElementById('theme-toggle');
+
+toggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+
+    // Optionally, you can save the theme preference in local storage
+    if (document.body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+// Load the theme from local storage on page load
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark');
+    }
+});
+
+//certifications
+
+let certificationData = [];
+
+// Function to load the Excel file
+function loadExcelFile() {
+    const url = 'certifications.xlsx'; // The path to your Excel file
+    console.log("Load excel file function");
+    // Fetch the Excel file
+    fetch(url)
+        .then(response => response.arrayBuffer())
+        .then(data => {
+            const workbook = XLSX.read(data, { type: 'array' });
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+            certificationData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+            // Process the data into a more usable format
+            // Skip the header row and convert to an array of objects
+            certificationData = certificationData.slice(1).map(row => ({
+                platform: row[0],
+                certificate: row[1],
+                date: row[2],
+                imagePath: row[3]
+            }));
+        })
+        .catch(error => console.error('Error loading Excel file:', error));
+}
+
+// Function to open the certification overlay
+function openCertOverlay(platform) {
+    const overlay = document.getElementById('overlayCert');
+    const certCompany = document.getElementById('CertCompany');
+    const overlayTextCert = document.getElementById('overlayTextCert');
+
+    // Clear previous content
+    overlayTextCert.innerHTML = '';
+
+    // Filter certifications by platform
+    const filteredCertifications = certificationData.filter(cert => cert.platform === platform);
+
+    // Populate overlay with certifications
+    certCompany.innerText = platform;
+    filteredCertifications.forEach(cert => {
+        overlayTextCert.innerHTML += `
+            <div>
+                <h4>${cert.certificate}</h4>
+                <p>Date: ${cert.date}</p>
+                <img src="${cert.imagePath}" alt="${cert.certificate}" class="cert-image" onclick="toggleImageSize(this)">
+            </div>
+            <br><br><br>
+        `;
+    });
+
+    // Show the overlay
+    overlay.style.display = 'flex';
+}
+
+// Function to close the certification overlay
+function closeCertOverlay() {
+    const overlay = document.getElementById('overlayCert');
+    overlay.style.display = 'none';
+}
+
+// Function to toggle image size
+function toggleImageSize(image) {
+    image.classList.toggle('zoomed');
+}
+
+// Load the Excel file when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', loadExcelFile);
+
 //timeline
 
 $('.member-title').click(function(e) {
@@ -5,6 +98,8 @@ $('.member-title').click(function(e) {
   $(this).next().slideToggle();
   $(this).next().next().next().slideToggle();
 })
+
+//Education & experience
 
 document.addEventListener('DOMContentLoaded', function() {
   // Get all tab buttons
@@ -35,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
           
           // Update the last clicked button
           lastClickedButton = button;
-          console.log(typeof button)
+          //console.log(typeof button)
           
 
           // Log the currently active tab
@@ -60,57 +155,7 @@ window.addEventListener('scroll', function() {
 });
 
 
-//certificates
-//var slideIndex = 1;
-//showSlides(slideIndex);
 
-var slideIndex = 0;
-showSlides();
-
-/*
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}*/
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-
-function showSlides() {
-	
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 3500); // Change image every 2 seconds
-/*
-
-var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 3500);
-  */
-}
 //overlay function
 
 function openOverlay() {
@@ -185,6 +230,7 @@ function typeWriter() {
         // Start the typing effect as soon as the window is available
 window.onload = function() {
   // Add the 'visible' class to the intro and image-wrapper elements
+  // Call the function to load the Excel file when the page loads
   document.querySelector('.intro').classList.add('visible');
   document.querySelector('.image-wrapper').classList.add('visible');
             typeWriter();
