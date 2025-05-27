@@ -403,6 +403,14 @@ body .toggle-button .moon {
       margin: 4px 2px;
       cursor: pointer;
     }
+.button:visited,
+.button:link,
+.button:hover,
+.button:active {
+  color: white;
+  text-decoration: none; /* ensure no underline on any state */
+}
+
     .button1 {
       background-color: white; 
       color: black; 
