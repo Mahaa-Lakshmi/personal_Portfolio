@@ -1103,6 +1103,10 @@ max-width: 1000px; /* optional: controls text width */
    text-align:justify;    
   }
 
+ .project-section {
+  padding: 40px 20px 0px 20px;
+
+}
   .project-card {
     flex-direction: column;
   }
@@ -1118,6 +1122,10 @@ max-width: 1000px; /* optional: controls text width */
     text-align: justify;
   }
 
+  .research_container,.skills-section,.container,.experience_container
+  {
+    padding-bottom: 0px;
+  }
 
  }
 
@@ -1182,6 +1190,12 @@ max-width: 1000px; /* optional: controls text width */
   .project-details p{
     text-align: justify;
   }
+
+  
+  .research_container,.skills-section,.container,.experience_container
+  {
+    padding-bottom: 0px;
+  }
    
     }
 
@@ -1232,5 +1246,6 @@ max-width: 1000px; /* optional: controls text width */
   .member-infos > p {
     font-size: 0.9em;
   }
+
 
 }
