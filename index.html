@@ -28,7 +28,7 @@
         <!--<img src="images/logo.png" class="logo"> -->
         <div class="logo">Mahaa</div>
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-          <ul>
+          <ul class="navbar-menu">
           <li><a href="#about">About</a> </li> 
           <li><a href="#experience_container">Experience</a> </li>  
           <li><a href="#skills">Skills</a></li> 
@@ -373,10 +373,14 @@ If you’re building the future with AI, let’s connect.
         <p>all work &#169; Mahaalakshmi 2024</p>
     </div>  
 
-    <script>
-  function toggleMenu() {
-    const navList = document.querySelector('nav ul');
-    navList.classList.toggle('show');
+   <script>
+   function toggleMenu() {
+    const menu = document.querySelector('.navbar-menu');
+    if (menu) {
+      menu.classList.toggle('active');
+    } else {
+      console.error("Navbar menu not found.");
+    }
   }
 </script>
     <script src="index.js"></script>

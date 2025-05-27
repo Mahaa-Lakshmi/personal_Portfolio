@@ -36,6 +36,10 @@ body.dark .timeline, body.dark .skill-category
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+body.dark .navbar-menu
+{
+background-color: rgba(0,0,0,1);
+}
 body.dark .skill-category h3
 {
   color: rgb(168, 0, 255);
@@ -156,13 +160,17 @@ body .toggle-button .moon {
       font-weight:550;
       
     }
-  .menu-toggle {
+  .navbar-menu {
+  display: flex;
+  gap: 1em;
+}
+
+.menu-toggle {
   display: none;
-  font-size: 24px;
+  font-size: 1.5em;
   background: none;
   border: none;
   cursor: pointer;
-  color: black;
 }
 
     /*First & Second block*/
@@ -932,13 +940,32 @@ max-width: 1000px; /* optional: controls text width */
     display: flex;
   }
 
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 1em;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  .navbar-menu.active {
+    display: flex;
+  }
+
   .menu-toggle {
     display: block;
+
   }
   #theme-toggle 
   {
-    padding: 5px 20px;
+    /*padding: 5px 20px;*/
     display: block;
+    
   }
    .publication-link .full-link {
     display: none;
@@ -1058,29 +1085,5 @@ max-width: 1000px; /* optional: controls text width */
     font-size: 0.9em;
   }
 
-   nav ul {
-    display: none;
-    flex-direction: column;
-    background-color: white;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    width: 200px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    padding: 10px;
-  }
-
-  nav ul.show {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-  #theme-toggle 
-  {
-    padding: 5px 20px;
-    display: block;
-  }
       
     }
