@@ -29,7 +29,7 @@
         <div class="logo">Mahaa</div>
           <ul>
           <li><a href="#about">About</a> </li>   
-          <li><a href="#MySkills">Skills</a></li>
+          <li><a href="#skills">Skills</a></li>
           <li><a href="#experience_container">Experience</a> </li>
           <li><a href="#certifications">Certifications</a> </li>
           <li><a href="#contact">Contact</a></li>
@@ -119,12 +119,6 @@ Let’s build the future-one model at a time.<br><br>
   </div>
 </div>
 
-    <!--
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-    </div>
--->
 
 <div class="row">
   
@@ -201,82 +195,101 @@ Let’s build the future-one model at a time.<br><br>
 </div>
 
     <!--third block-->
-    <div class="text-center MYSKILLS" id="MySkills" >
-      <h3><b>MY SKILLS</b></h3>
-      <br>
-      <div class="Outerdiv">
-        <div class="innerdiv">
-
-          <div class="eachpart col-sm-6">
-            <p class="skillname">Python</p>
-            <p class="skillpercentage">90%</p>
-            
-            <div class="container1 text-center">
-                <div class="skills python"></div>
-            </div>
-          </div>
-
-
-
-          <div class="eachpart col-sm-6">
-            <p class="skillname">HTML</p>
-            <p class="skillpercentage">90%</p>
-            
-            <div class="container1">
-                <div class="skills html"></div>
-            </div>
-          </div>
-
-          <div class="eachpart col-sm-6">
-            <p class="skillname">CSS</p>
-            <p class="skillpercentage">90%</p>
-            
-            <div class="container1 text-center">
-                <div class="skills css"></div>
-            </div>
-          </div>
-
-          
-
-
-          <div class="eachpart col-sm-6">
-            <p class="skillname">Wordpress</p>
-            <p class="skillpercentage">90%</p>
-            
-            <div class="container1 text-center">
-                <div class="skills wordpress"></div>
-            </div>
-          </div>
-
-          <div class="eachpart col-sm-6">
-            <p class="skillname">Bootstrap</p>
-            <p class="skillpercentage">80%</p>
-            
-            <div class="container1 text-center">
-                <div class="skills bootstrap"></div>
-            </div>
-          </div>
-
-          <div class="eachpart col-sm-6">
-            <p class="skillname">Java</p>
-            <p class="skillpercentage">70%</p>
-            
-            <div class="container1 text-center">
-                <div class="skills java"></div>
-            </div>
-          </div>
-
-          <div class="eachpart col-sm-6">
-            <p class="skillname">Javascript</p>
-            <p class="skillpercentage">70%</p>
-            
-            <div class="container1 text-center">
-                <div class="skills js"></div>
-            </div>
-          </div>
-        </div>
+         <!--kills-->
+<section id="skills" class="skills-section">
+  <h3 id="skillstitle"><b>SKILLS</b></h3><br>
+  <div class="skill-categories">
+    <div class="skill-category" onclick="toggleSkillItems(this)">
+      <div style="display: flex; align-items: center;">
+      <img src="images/skills logo/programming.jpg" class="skill-icon-large">
+      <h3>Programming Languages</h3>
       </div>
-     </div>
+      <ul>
+        <li>Python</li>
+        <li>Java</li>
+        <li>SQL</li>
+        <li>JavaScript</li>
+        <li>HTML/CSS</li>
+        <li>Linux (Bash, Cron)</li>
+      </ul>
+    </div>
+    <div class="skill-category" onclick="toggleSkillItems(this)">
+      <div style="display: flex; align-items: center;">
+      <img src="images/skills logo/ml.jpg" class="skill-icon">
+      <h3>ML/DL</h3>
+      </div>
+      <ul>
+        <li>Scikit-learn</li>
+        <li>TensorFlow</li>
+        <li>PyTorch</li>
+        <li>Ensemble Techniques</li>
+      </ul>
+    </div>
+    <div class="skill-category" onclick="toggleSkillItems(this)">
+      <div style="display: flex; align-items: center;">
+      <img src="images/skills logo/genai.png" class="skill-icon">
+      <h3>NLP & GenAI</h3>
+      </div>
+      <ul>
+        <li>Transformers</li>
+        <li>HuggingFace</li>
+        <li>LLMs</li>
+        <li>RAG</li>
+        <li>Prompt Engineering</li>
+      </ul>
+    </div>
+    <div class="skill-category" onclick="toggleSkillItems(this)">
+      <div style="display: flex; align-items: center;">
+      <img src="images/skills logo/mlops.png" class="skill-icon">
+      <h3> MLOps & Cloud Tools</h3>
+      </div>
+      <ul>
+        <li>MLflow</li>
+        <li>LangChain</li>
+        <li>Git</li>
+        <li>Streamlit</li>
+        <li>Azure (AZ-900)</li>
+        <li>AWS</li>
+      </ul>
+    </div>
+    <div class="skill-category" onclick="toggleSkillItems(this)">
+      <div style="display: flex; align-items: center;">
+      <img src="images/skills logo/analytics.jpg" class="skill-icon-large">
+      <h3>Libraries & Analytics</h3>
+      </div>
+      <ul>
+        <li>Pandas</li>
+        <li>NumPy</li>
+        <li>Matplotlib</li>
+        <li>Seaborn</li>
+        <li>Plotly</li>
+      </ul>
+    </div>
+    <div class="skill-category" onclick="toggleSkillItems(this)">
+      <div style="display: flex; align-items: center;">
+      <img src="images/skills logo/ide.png" class="skill-icon-large">
+      <h3>Dev & Platforms</h3>
+      </div>
+      <ul>
+        <li>PowerBI</li>
+        <li>Git</li>
+        <li>Jupyter</li>
+        <li>VS Code</li>
+        <li>Oracle Documaker</li>
+      </ul>
+    </div>
+    <div class="skill-category" onclick="toggleSkillItems(this)">
+      <div style="display: flex; align-items: center;">
+      <img src="images/skills logo/misc.png" class="skill-icon-large">
+      <h3>Misc</h3>
+      </div>
+      <ul>
+        <li>Poster Designing</li>
+        <li>Python Flask</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 
     <!--certifications-->
@@ -314,23 +327,6 @@ Let’s build the future-one model at a time.<br><br>
   <div id="imageFullscreen" class="image-fullscreen" onclick="closeFullscreenImage()">
     <img id="fullscreenImg" src="">
   </div>
-
-
-
-    <!--Contact-->
-    <!--
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-6 ">
-            <h2>Let's Discuss your Project</h2>
-          </div>
-          <div class="col-sm-6">
-            
-          </div>
-        </div>
-      </div>
-
--->
 
       <!--contact-->
       <div class="contact" id="contact">
