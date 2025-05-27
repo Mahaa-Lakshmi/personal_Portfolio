@@ -30,7 +30,8 @@
           <ul>
           <li><a href="#about">About</a> </li>   
           <li><a href="#MySkills">Skills</a></li>
-          <li><a href="#Edu">Education</a> </li>
+          <li><a href="#experience_container">Experience</a> </li>
+          <li><a href="#certifications">Certifications</a> </li>
           <li><a href="#contact">Contact</a></li>
           <button id="theme-toggle" class="toggle-button" aria-label="Toggle Theme">
             <span class="moon"><img src="images/darkMode.png"></span>
@@ -77,7 +78,7 @@
       <!--About-->
       
 
-      <div class="container about_container">
+      <div class="container about_container" id="about">
       <div class="row">
         <div class="col-sm-6 text-center">
           <img src="images/aboutme.png" class="aboutImage">
@@ -85,18 +86,22 @@
         <div class="col-sm-6 about">
           <h3><b>Data-Driven Problem Solver with Expertise in AI Development and Middleware Solutions</b></h3><br>
           <p>
-            <span style="color: rgb(168, 0, 255);">Hello! </span>  I’m Mahaalakshmi B, an aspiring AI Engineer with a strong foundation in Information Technology and almost 2 years of hands-on experience in custom software engineering at Accenture. Skilled in problem-solving, deployment management, and client engagement, I contributed to seamless operations by managing middleware issues and working with Oracle Documaker Studio.<br><br>
+            <span style="color: rgb(168, 0, 255);">Hello! </span>  I’m Mahaalakshmi B, a certified AI Developer and Data Scientist passionate about building real-world solutions through machine learning, deep learning, and GenAI. With 1.75 years of software engineering experience at Accenture and certifications from IIT-M Pravartak and IBM, I bridge the gap between robust backend systems and intelligent automation.<br><br>
 
-Currently, I’m advancing my AI skills through the IBM AI Developer Professional Certificate on Coursera, focusing on machine learning, NLP, and deep learning. I’m also preparing for the AI-102 certification to further validate my expertise in designing AI solutions with Microsoft Azure.<br><br>
+My work spans across NLP, Generative AI, MLOps, and scalable ML pipelines-demonstrated through impactful projects like <b>RAGcruiter</b> (an AI resume screener using LangChain & Gemini API), <b>Customer Conversion Analysis</b> (predictive modeling using classification, regression, clustering, and advanced feature engineering), and <b>mental health risk detection</b> using deep learning.<br><br>
 
-Armed with a drive for continuous learning and a vision to push the boundaries of AI, I am eager to create solutions that not only automate processes but also unlock new avenues of efficiency and insight. My goal is to merge technical rigor with creativity, building AI-driven innovations that truly resonate in the real world. Ready to make a meaningful impact, I’m excited to contribute my skills to forward-thinking teams where I can help shape the future of technology.<br><br>
+I specialize in turning complex data into actionable insights, crafting intelligent applications, and deploying end-to-end AI solutions. From document automation to cutting-edge GenAI models, I’ve consistently delivered with a balance of precision and creativity.<br><br>
+
+Currently, I’m exploring LLMs, prompt engineering, and responsible AI to stay at the frontier of innovation. My goal is simple: to contribute to transformative AI products that are reliable, impactful, and human-centric.<br><br>
+
+Let’s build the future-one model at a time.<br><br>
           </p>
 
         </div>
         
       </div>
     </div>
-    <div class="container experience_container" style="padding-top: 0px;">
+    <div class="container experience_container" style="padding-top: 0px;" id="experience_container">
       <div class="row">
         <h3 class="text-center"><b>Experience</b></h3><br>
           <div class="col text-center">
@@ -275,43 +280,45 @@ Armed with a drive for continuous learning and a vision to push the boundaries o
 
 
     <!--certifications-->
-    <div class="container cert_container text-center">      
-      <div class="row">
-        <h3><b>CERTIFICATIONS</b></h3>
+<!-- Certification Display -->
+  <div class="container cert_container text-center" id="certifications">
+    <h3><b>CERTIFICATIONS</b></h3>
         <br><br>
         <p>Explore my certifications from leading technology organizations. Click each logo to view my credentials from GUVI, Microsoft, and more, including specialized courses completed on Coursera with endorsements from AWS, IBM, and others.</p>
-        
-        <div class="col-sm-3 col-md-3 CertCompany" onclick="openCertOverlay('Coursera')">
-          <img src="images/companyIcons/coursera.png">
-          <span>COURSERA</span>
-        </div>
-        
-        <div class="col-sm-3 col-md-3 CertCompany" onclick="openCertOverlay('Guvi')">
-          <img src="images/companyIcons/GUVI.png">
-          <span>GUVI</span>
-        </div>
-        <div class="col-sm-3 col-md-3 CertCompany" onclick="openCertOverlay('Microsoft')">
-          <img src="images/companyIcons/microsoft.png">
-          <span>MICROSOFT</span>
-        </div>
-        <div class="col-sm-3 col-md-3 CertCompany" onclick="openCertOverlay('other')">
-          <img src="images/companyIcons/other.png">
-          <span>Miscellaneous</span>          
-        </div>
-      </div>
+     <div class="row">   
+    <div class="col-sm-3 col-md-3 CertCompany" onclick="openCertOverlay('Coursera')">
+      <img src="images/companyIcons/coursera.png" alt="Coursera"> <br>COURSERA
     </div>
+    <div class="col-sm-3 col-md-3 CertCompany" onclick="openCertOverlay('Guvi')">
+      <img src="images/companyIcons/GUVI.png" alt="GUVI"> <br>GUVI
+    </div>
+    <div class="col-sm-3 col-md-3 CertCompany" onclick="openCertOverlay('Microsoft')">
+      <img src="images/companyIcons/microsoft.png" alt="Microsoft"> <br>MICROSOFT
+    </div>
+    <div class="col-sm-3 col-md-3 CertCompany" onclick="openCertOverlay('other')">
+      <img src="images/companyIcons/other.png" alt="Other"> <br>Miscellaneous
+    </div>
+    </div>
+  </div>
 
-  <!-- Certification Overlay Content -->
+  <!-- Overlay Popup -->
   <div id="overlayCert" class="overlay" onclick="closeCertOverlay()">
     <div class="overlay-content" onclick="event.stopPropagation();">
-        <h2 id="CertCompany"></h2>
-        <div id="overlayTextCert"></div>
-        <button onclick="closeCertOverlay()" class="glyphicon glyphicon-remove-circle"></button> <!-- Optional close button -->
+      <button onclick="closeCertOverlay()">×</button>
+      <h2 id="CertCompany"></h2>
+      <div id="overlayTextCert"></div>
     </div>
-</div>
+  </div>
+
+  <!-- Fullscreen Image Viewer -->
+  <div id="imageFullscreen" class="image-fullscreen" onclick="closeFullscreenImage()">
+    <img id="fullscreenImg" src="" alt="Fullscreen Certificate">
+  </div>
+
+
 
     <!--Contact-->
-    
+    <!--
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6 ">
@@ -322,9 +329,13 @@ Armed with a drive for continuous learning and a vision to push the boundaries o
           </div>
         </div>
       </div>
+
+-->
+
+      <!--contact-->
       <div class="contact" id="contact">
-        <a href="https://github.com/Mahaa-Lakshmi?tab=repositories"><i style="font-size:30px" class="fa">&#xf09b;</i></a>
-        <a href="https://www.linkedin.com/in/mahaa-lakshmi-452654193/"><i style="font-size:30px" class="fa">&#xf08c;</i></a>
+        <a href="https://github.com/Mahaa-Lakshmi"><i style="font-size:30px" class="fa">&#xf09b;</i></a>
+        <a href="https://www.linkedin.com/in/mahaalakshmi-sankar-452654193/"><i style="font-size:30px" class="fa">&#xf08c;</i></a>
         <br>
         <p>all work &#169; Mahaalakshmi 2024</p>
     </div>  

@@ -522,41 +522,39 @@ body .toggle-button .moon {
 
 
     /*certificates*/
-    .cert_container
-    {
-      font-family: 'Sniglet', cursive;
-
+  
+    .cert_container {
+      padding: 40px 20px;
+      text-align: center;
     }
 
-    .CertCompany
-    {
-      padding-top: 30px;  
-      font-weight: bolder;    
+    .CertCompany {
+      margin: 20px 0;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
 
-    .CertCompany:hover
-    {
-      transform: scale(1.25); /* Slightly enlarge on hover */
-      transition: transform 0.3s ease; /* Smooth transition */
+    .CertCompany:hover {
+      transform: scale(1.15);
     }
 
-    .CertCompany img
-    {
+    .CertCompany img {
       height: 70px;
       padding: 10px;
     }
 
-/* Overlay Styles */
+    /* Overlay Styles */
 .overlay {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
    /*z-index: 1; Sit on top */
   left:50%;
   top:50%;
-  width: 80%; /* Full width */
-  height: 70%; /* Full height */
-  max-height: 80%;
-  background-color: rgba(0,0,0,0.8); /* Black background with opacity */
+  width: 100%; /* Full width */
+  height: 85%; /* Full height */
+  max-height: 85%;
+  background-color: rgba(0,0,0); /* Black background with opacity */
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
   transform: translate(-50%, -50%);
@@ -584,6 +582,7 @@ body .toggle-button .moon {
 
 .cert-image.zoomed {
   transform: scale(2); /* Zoom effect */
+  overflow-x: auto;
 }
 
 /* Position the close button (top right corner) */
@@ -601,6 +600,81 @@ body .toggle-button .moon {
   transform: scale(1.25); /* Slightly enlarge on hover */
     transition: transform 0.3s ease; /* Smooth transition */
 }
+
+
+
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 90%;
+      height: 85%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.95);
+      border-radius: 10px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      z-index: 1000;
+      color: white;
+      padding: 40px 30px;
+    }
+
+    .overlay h2 {
+      margin-top: 0;
+    }
+
+    .overlay-content button {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .overlay-content button:hover {
+      color: #bb86fc;
+      transform: scale(1.2);
+    }
+
+    .cert-image {
+      max-width: 80%;
+      margin-top: 10px;
+      cursor: zoom-in;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .cert-item {
+      margin-bottom: 40px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+    }
+
+    .image-fullscreen {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(0,0,0,0.95);
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+    }
+
+    .image-fullscreen img {
+      max-width: 95vw;
+      max-height: 95vh;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    }
 
 
 

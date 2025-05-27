@@ -19,77 +19,63 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-//certifications
-
 let certificationData = [];
 
-// Function to load the Excel file
-function loadExcelFile() {
-    const url = 'certifications.xlsx'; // The path to your Excel file
-    console.log("Load excel file function");
-    // Fetch the Excel file
-    fetch(url)
+    function loadExcelFile() {
+      fetch('certifications.xlsx')
         .then(response => response.arrayBuffer())
         .then(data => {
-            const workbook = XLSX.read(data, { type: 'array' });
-            const firstSheetName = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[firstSheetName];
-            certificationData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-
-            // Process the data into a more usable format
-            // Skip the header row and convert to an array of objects
-            certificationData = certificationData.slice(1).map(row => ({
-                platform: row[0],
-                certificate: row[1],
-                date: row[2],
-                imagePath: row[3]
-            }));
+          const workbook = XLSX.read(data, { type: 'array' });
+          const sheet = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[sheet];
+          certificationData = XLSX.utils.sheet_to_json(worksheet, { header: 1 }).slice(1).map(row => ({
+            platform: row[0],
+            certificate: row[1],
+            date: row[2],
+            imagePath: row[3]
+          }));
         })
-        .catch(error => console.error('Error loading Excel file:', error));
-}
+        .catch(err => console.error('Failed to load certifications:', err));
+    }
 
-// Function to open the certification overlay
-function openCertOverlay(platform) {
-    const overlay = document.getElementById('overlayCert');
-    const certCompany = document.getElementById('CertCompany');
-    const overlayTextCert = document.getElementById('overlayTextCert');
+    function openCertOverlay(platform) {
+      const overlay = document.getElementById('overlayCert');
+      const certCompany = document.getElementById('CertCompany');
+      const overlayTextCert = document.getElementById('overlayTextCert');
+      overlayTextCert.innerHTML = '';
 
-    // Clear previous content
-    overlayTextCert.innerHTML = '';
+      const filtered = certificationData.filter(cert => cert.platform === platform);
+      certCompany.innerText = platform;
 
-    // Filter certifications by platform
-    const filteredCertifications = certificationData.filter(cert => cert.platform === platform);
-
-    // Populate overlay with certifications
-    certCompany.innerText = platform;
-    filteredCertifications.forEach(cert => {
+      filtered.forEach(cert => {
         overlayTextCert.innerHTML += `
-            <div>
-                <h4>${cert.certificate}</h4>
-                <p>Date: ${cert.date}</p>
-                <img src="${cert.imagePath}" alt="${cert.certificate}" class="cert-image" onclick="toggleImageSize(this)">
-            </div>
-            <br><br><br>
+          <div class="cert-item">
+            <h4>${cert.certificate}</h4>
+            <p>Date: ${cert.date}</p>
+            <img src="${cert.imagePath}" alt="${cert.certificate}" class="cert-image" onclick="openFullscreenImage('${cert.imagePath}')">
+          </div>
         `;
-    });
+      });
 
-    // Show the overlay
-    overlay.style.display = 'flex';
-}
+      overlay.style.display = 'block';
+    }
 
-// Function to close the certification overlay
-function closeCertOverlay() {
-    const overlay = document.getElementById('overlayCert');
-    overlay.style.display = 'none';
-}
+    function closeCertOverlay() {
+      document.getElementById('overlayCert').style.display = 'none';
+    }
 
-// Function to toggle image size
-function toggleImageSize(image) {
-    image.classList.toggle('zoomed');
-}
+    function openFullscreenImage(src) {
+      const viewer = document.getElementById('imageFullscreen');
+      const img = document.getElementById('fullscreenImg');
+      img.src = src;
+      viewer.style.display = 'flex';
+    }
 
-// Load the Excel file when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', loadExcelFile);
+    function closeFullscreenImage() {
+      document.getElementById('imageFullscreen').style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', loadExcelFile);
 
 //timeline
 
@@ -163,7 +149,7 @@ function openOverlay() {
   let dictionary = {
     "Accenture" : "Contributed as a Software Engineer specializing in middleware support, deployment management, and client engagement. <br><br>My responsibilities included:<br><br><ul><li><b>Problem-Solving & Client Engagement:</b> Worked closely with diverse teams to address middleware issues impacting applications, fostering seamless communication and rapid resolution of client concerns.</li><li><b>Deployment Management:</b> Orchestrated weekly and monthly deployments to production environments, ensuring zero-downtime operations and upholding Accenture's high standards in service reliability.</li><li><b>Oracle Documaker Studio Expertise:</b> Utilized Oracle Documaker Studio 12.5 for document automation, developing and managing templates that enhanced document accuracy and processing speeds.</li><li><b>Documentation Integrity & RTB (Run-The-Business) Activities: </b>Maintained comprehensive documentation, aligned with operational standards, and managed RTB activities to streamline business processes.</li></ul><br>This role sharpened my abilities in problem-solving, team collaboration, and deployment management, and helped me build a solid foundation in ensuring operational efficiency.",
     "NITK" : "During this internship, I collaborated with the Centre for System Design at NITK Surathkal and the Virtual Labs National Coordination for the Ministry of Education, focusing on virtual lab development:<br><br><ul><li><b>Project Focus:</b> Developed an online experiment titled Measurement of Torque Using Torque Sensor for the Metrology and Measurement Lab under the Department of Mechanical Engineering.</li><li><b>Compliance with Standards:</b> Adhered to processes (R0 through R4) set by Virtual Lab National Coordination, ensuring the experiment met the quality and educational standards for Virtual Labs.</li><li><b>Technical Supervision:</b> Operated under the guidance of NITK faculty and PALS (Participating Agency for Labs and Simulation), enhancing my understanding of virtual labs and educational simulation technologies.</li></ul><br><br>This experience strengthened my technical skills in experiment development and exposed me to the educational application of technology in a virtual setting.",
-    "MyAssessment": "In this programming internship, I focused on developing my Python programming skills, with daily tasks and hands-on problem-solving exercises:<br><br><ul><li><b>Python for Problem Solving:</b> Engaged in intensive Python training with daily programming tasks, which honed my skills in writing efficient code and solving complex problems.</li><li><b>Applied Knowledge:</b> Tackled real-world programming challenges, gaining practical experience in Python that laid the foundation for my future work in AI and data science.</li><li><b>Growth in Logical Thinking:</b> The internship reinforced critical thinking and logical problem-solving skills, essential for programming and data analysis.</li></ul><br><br>This internship allowed me to deepen my understanding of Python and build a strong programming foundation, which has been instrumental in my ongoing studies and AI-focused career path."
+    "MyAssessment": "In this programming internship, I focused on developing my Python programming skills, with daily tasks and hands-on problem-solving exercises:<br><br><ul><li><b>Python for Problem Solving:</b> Engaged in intensive Python training with daily programming tasks, which honed my skills in writing efficient code and solving complex problems.</li><li><b>Applied Knowledge:</b> Tackled real-world programming challenges, gaining practical experience in Python that laid the foundation for my future work in AI and data science.</li><li><b>Growth in Logical Thinking:</b> The internship reinforced critical thinking and logical problem-solving skills, essential for programming and data analysis.</li></ul><br>This internship allowed me to deepen my understanding of Python and build a strong programming foundation, which has been instrumental in my ongoing studies and AI-focused career path."
   }
   // Get the parent <p> element of the link that was clicked
   const link = event.target; // The clicked link
@@ -209,7 +195,7 @@ function closeOverlay()
 
 /*On window loads functions */
 var i = 0;
-var txt = 'Aspiring AI Engineer | IT & Middleware Specialist';
+var txt = 'Data Scientist | AI Enthusiast';
 var speed =70;
 function typeWriter() {
 
