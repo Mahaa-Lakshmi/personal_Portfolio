@@ -1,0 +1,16 @@
+
+    .member-infos
+    {
+      padding: 0 !important;
+    }
+
+    .timeline .event {
+      min-width: auto; /* Remove min-width to prevent overflow */
+      /*padding: 10px;  Optional: add padding for better spacing */
+      width: calc(100% - 5px); /* Adjust width to fit the screen */
+      margin: 10px 0; /* Add margin for spacing between events */
+  }
+
+  .member-infos>p{
+   text-align:justify;    
+  }
