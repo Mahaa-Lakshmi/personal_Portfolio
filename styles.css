@@ -156,7 +156,7 @@ body .toggle-button .moon {
       font-weight:550;
       
     }
-    .menu-toggle {
+  .menu-toggle {
   display: none;
   font-size: 24px;
   background: none;
@@ -1056,6 +1056,31 @@ max-width: 1000px; /* optional: controls text width */
   .member-location,
   .member-infos > p {
     font-size: 0.9em;
+  }
+
+   nav ul {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 10px;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+  #theme-toggle 
+  {
+    padding: 5px 20px;
+    display: block;
   }
       
     }
