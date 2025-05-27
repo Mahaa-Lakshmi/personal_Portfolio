@@ -186,15 +186,19 @@ function openOverlay() {
   //console.log(dictionary.Accenture);
 }
 
-function closeOverlay()
-{
-  //console.log("inside close Overlay")
-  document.getElementById("overlayText").style.display = "none";
-  document.getElementById("overlayText").innerHTML = "";
-  document.getElementById("Company").style.display = "none";
-  document.getElementById("Company").innerHTML = "";
+function closeOverlay(event) {
   document.getElementById("overlay").style.display = "none";
- 
+  document.getElementById("overlayText").innerHTML = "";
+  document.getElementById("Company").innerHTML = "";
+}
+
+let currentSlide = 0;
+
+function moveSlide(direction) {
+  const container = document.getElementById('carouselContainer');
+  const slides = container.children.length;
+  currentSlide = (currentSlide + direction + slides) % slides;
+  container.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
 
 /*On window loads functions */
